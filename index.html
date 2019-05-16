@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Flexbox Masonry Reloaded by Alexander Sandberg</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Flexbox Masonry Reloaded</h1>
+  <div class="container">
+    <div class="item" style="height: 140px"></div>
+    <div class="item" style="height: 190px"></div>
+    <div class="item" style="height: 170px"></div>
+    <div class="item" style="height: 120px"></div>
+    <div class="item" style="height: 160px"></div>
+    <div class="item" style="height: 180px"></div>
+    <div class="item" style="height: 140px"></div>
+    <div class="item" style="height: 150px"></div>
+    <div class="item" style="height: 170px"></div>
+    <div class="item" style="height: 170px"></div>
+  </div>
+  <p>A flexbox-powered masonry layout, based on <a href="https://tobiasahlin.com/blog/masonry-with-css/">Tobias Ahlin's awesome solution</a>.</p>
+  <p>This fork adds <em>automatic container height</em>, <em>customizable gutter size</em>, and <em>responsivity</em>, with CSS Custom Properties and a few rows of JavaScript.</p>
+  <p>~</p>
+  <p>A lil' project by <a href="https://github.com/alexandersandberg">Alexander Sandberg</a> 🐨 / <a href="">GitHub repo</a></p>
+  <script>
+    const root = document.querySelector(':root');
+    const container = document.querySelector('.container');
+    const gutter = parseInt(getComputedStyle(root).getPropertyValue('--gutter'));
+
+    /* Calculate the highest column and assign it to .container */
+    function setHeight() {
+      const columns = parseInt(getComputedStyle(root).getPropertyValue('--columns'));
+      if(columns == 1){ container.style.removeProperty('height'); return; }
+
+      let heights = new Array(columns).fill(0);
+      [...document.querySelectorAll('div.item')].map((item, i) => heights[i % columns] += item.offsetHeight + gutter * 2);
+
+      container.style.setProperty('height', Math.max(...heights) + 'px');
+    }
+    setHeight();
+
+    window.addEventListener("resize", () => {
+      setHeight();
+    });
+  </script>
+</body>
+</html>
