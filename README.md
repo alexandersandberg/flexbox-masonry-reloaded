@@ -14,7 +14,7 @@ With CSS Custom Properties and a little bit of JavaScript:
 The JavaScript works with any amount of columns, but needs some tweaking in the HTML and the CSS. See [Tobias's blog post](https://tobiasahlin.com/blog/masonry-with-css/) for more info on that (not the exact same fix, but similar).
 
 ## Usage
-[**Check it out live**](https://alexandersandberg.github.io/theme-switcher/) *or* download the files and open `index.html` in your preferred browser.
+[**Check it out live**](https://alexandersandberg.github.io/flexbox-masonry-reloaded/) *or* download the files and open `index.html` in your preferred browser.
 
 ## A project by Alexander Sandberg
 Thanks for checking out my project! ❤️
