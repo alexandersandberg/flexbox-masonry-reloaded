@@ -1,0 +1,86 @@
+:root {
+  --columns: 1;
+  --item-width: calc(100% / var(--columns));
+  --gutter: 20px; /* only px will work */
+}
+
+body {
+  font: normal 125%/1.4 Georgia, 'Times New Roman', Times, serif;
+  max-width: 1200px;
+  padding: 2ch;
+  margin: auto;
+  text-align: center;
+  color: #222430;
+}
+
+p {
+  max-width: 60ch;
+  margin: 20px auto;
+}
+
+a {
+  color: #d34a97;
+}
+
+.container {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: space-between;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+  padding: 20px;
+  margin: 40px auto;
+  counter-reset: items;
+}
+
+div.item::before {
+  counter-increment: items;
+  content: counter(items);
+}
+
+.item {
+  width: var(--item-width);
+  margin-bottom: calc(var(--gutter) * 2);
+  box-sizing: border-box;
+  position: relative;
+  border-radius: 3px;
+  background-color: #b1d6c2;
+  border: 1px solid #7c9788;
+  box-shadow: 0 2px 2px rgba(0,90,250,0.05),
+    0 4px 4px rgba(0,90,250,0.05),
+    0 8px 8px rgba(0,90,250,0.05),
+    0 16px 16px rgba(0,90,250,0.05);
+  color: #fff;
+  padding: 15px;
+}
+
+.container::before,
+.container::after {
+  content: "";
+  flex-basis: 100%;
+  width: 0;
+  order: 2;
+  display: none;
+}
+
+@media (min-width: 600px) {
+  :root {
+    --columns: 2;
+    --item-width: calc(100% / var(--columns) - var(--gutter));
+  }
+
+  .item:nth-of-type(2n+1) { order: 1; }
+  .item:nth-of-type(2n) { order: 2; }
+  .container::before { display: block; }
+}
+
+@media (min-width: 1000px) {
+  :root {
+    --columns: 3;
+  }
+
+  .item:nth-of-type(3n+1) { order: 1; }
+  .item:nth-of-type(3n+2) { order: 2; }
+  .item:nth-of-type(3n) { order: 3; }
+  .container::after { display: block; }
+}
