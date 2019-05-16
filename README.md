@@ -3,7 +3,7 @@
 # Flexbox Masonry Reloaded
 
 ## About the project
-A flexbox-powered masonry layout, based on [@tobiasahlin's awesome solution](https://tobiasahlin.com/blog/masonry-with-css/).
+A flexbox-powered masonry layout, based on @tobiasahlin's [awesome solution](https://tobiasahlin.com/blog/masonry-with-css/).
 
 With CSS Custom Properties and a little bit of JavaScript:
 * *Automatic container height* — No fixed height needed
